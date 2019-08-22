@@ -1,7 +1,3 @@
-#Bootcamp GoStack - Rocketseat
+**Bootcamp GoStack - Rocketseat**
 
-<ul>
-
-- [] Modulo01 - Conceitos de NodeJs
-
-</ul>
+- [x] Modulo01 - Conceitos de NodeJs
