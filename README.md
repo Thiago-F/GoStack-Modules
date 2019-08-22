@@ -1,3 +1,3 @@
-<h1>Bootcamp GoStack - Rocketseat#</h1>
+<h1>Bootcamp GoStack - Rocketseat</h1>
 
- - [x] Modulo01 - Conceitos de NodeJs
+ - [x] Modulo01 - Conceitos de NodeJs :heavy_check_mark:
