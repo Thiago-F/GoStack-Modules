@@ -9,6 +9,7 @@ export const Loading = styled.div`
     align-items: center;
     height: 100vh;
 `;
+
 export const Owner = styled.header`
     display: flex;
     flex-direction: column;
@@ -42,5 +43,64 @@ export const Owner = styled.header`
         line-height: 1.4;
         text-align: center;
         max-width: 400px;
+    }
+`;
+
+export const IssueList = styled.ul`
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    list-style: none;
+
+    li {
+        display: flex;
+        padding: 15px 10px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+
+        & + li {
+            margin-top: 10px;
+        }
+
+        img {
+            height: 36px;
+            width: 36px;
+            border-radius: 50%;
+            border: 2px solid #eee;
+        }
+
+        div {
+            flex: 1;
+            margin-left: 15px;
+            strong {
+                font-size: 16px;
+
+                a {
+                    text-decoration: none;
+                    color: #333;
+
+                    &:hover {
+                        color: #7159c1;
+                    }
+                }
+
+                span {
+                    background: #04d361;
+                    color: #eee;
+                    border-radius: 2px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    height: 20px;
+                    padding: 3px 4px;
+                    margin-left: 10px;
+                }
+            }
+
+            p {
+                margin-top: 5px;
+                font-size: 12px;
+                color: #999;
+            }
+        }
     }
 `;
