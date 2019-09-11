@@ -7,7 +7,7 @@ export const Form = styled.form`
 
     input {
         flex: 1;
-        border: 1px solid #eee;
+        /* border: 1px solid #eee; */
         padding: 10px 15px;
         border-radius: 4px;
         font-size: 16px;
@@ -21,6 +21,10 @@ const rotate = keyframes`
     to {
         transform: rotate(360deg);
     }
+`;
+
+export const Input = styled.input`
+    border: 2px solid ${props => (props.notFound ? 'red' : '#eee')};
 `;
 
 export const SubmitButton = styled.button.attrs(props => ({

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
-import { Form, SubmitButton, List } from './styles';
+import { Form, SubmitButton, List, Input } from './styles';
 import Container from '../../components/Container';
 
 import api from '../../services/api';
@@ -12,6 +12,7 @@ export default class Main extends Component {
         newRepo: '',
         repositories: [],
         loading: false,
+        notFound: false,
     };
 
     componentDidMount() {
@@ -30,6 +31,9 @@ export default class Main extends Component {
     }
 
     handleInputChange = e => {
+        if (e.target.value.length === 0) {
+            this.setState({ notFound: false });
+        }
         this.setState({ newRepo: e.target.value });
     };
 
@@ -39,21 +43,35 @@ export default class Main extends Component {
 
         const { newRepo, repositories } = this.state;
 
-        const response = await api.get(`/repos/${newRepo}`);
+        try {
+            await repositories.map(repos => {
+                if (repos.name === newRepo)
+                    throw new Error('Repositório duplicado');
 
-        const data = {
-            name: response.data.full_name,
-        };
+                return false;
+            });
 
-        this.setState({
-            repositories: [...repositories, data],
-            newRepo: '',
-            loading: false,
-        });
+            const response = await api.get(`/repos/${newRepo}`);
+
+            const data = {
+                name: response.data.full_name,
+            };
+
+            this.setState({
+                repositories: [...repositories, data],
+                newRepo: '',
+                loading: false,
+            });
+        } catch (error) {
+            this.setState({
+                loading: false,
+                notFound: true,
+            });
+        }
     };
 
     render() {
-        const { newRepo, loading, repositories } = this.state;
+        const { newRepo, loading, repositories, notFound } = this.state;
 
         return (
             <Container>
@@ -62,11 +80,12 @@ export default class Main extends Component {
                     Repositórios
                 </h1>
                 <Form onSubmit={this.handleSubmit}>
-                    <input
+                    <Input
                         type="text"
                         placeholder="Adicionar repositório"
                         value={newRepo}
                         onChange={this.handleInputChange}
+                        notFound={newRepo.length === 0 ? '' : notFound}
                     />
 
                     <SubmitButton loading={loading ? 1 : 0}>

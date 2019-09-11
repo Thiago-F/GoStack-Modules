@@ -46,6 +46,23 @@ export const Owner = styled.header`
     }
 `;
 
+export const IssueOptions = styled.div`
+    margin: 15px 0;
+    text-align: center;
+
+    button {
+        margin: 0 10px;
+        border: none;
+        background: none;
+        padding: 7px 15px;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: #eee;
+        }
+    }
+`;
+
 export const IssueList = styled.ul`
     padding-top: 30px;
     margin-top: 30px;
