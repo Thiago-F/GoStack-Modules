@@ -1,4 +1,4 @@
-<h1>Bootcamp GoStack - Rocketseat</h1>
+<h1>Bootcamp GoStack Modules- Rocketseat</h1>
 
 <h3>:white_check_mark: Modulo01 - Conceitos de NodeJs</h3>
 <h3>:white_check_mark: Modulo02 - GoBarber</h3>
